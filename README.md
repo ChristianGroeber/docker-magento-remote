@@ -127,12 +127,12 @@ mkdir -p ~/Sites/magento
 cd $_
 
 # Run this automated one-liner from the directory you want to install your project.
-curl -s https://raw.githubusercontent.com/markshust/docker-magento/master/lib/onelinesetup | bash -s -- magento.test 2.4.5
+curl -s https://raw.githubusercontent.com/ChristianGroeber/docker-magento-remote/master/lib/onelinesetup | bash -s -- magento.dev.kristophersson.ch 2.4.5
 ```
 
 The `magento.test` above defines the hostname to use, and the `2.4.5` defines the Magento version to install. Note that since we need a write to `/etc/hosts` for DNS resolution, you will be prompted for your system password during setup.
 
-After the one-liner above completes running, you should be able to access your site at `https://magento.test`.
+After the one-liner above completes running, you should be able to access your site at `https://magento.dev.kristophersson.ch`.
 
 #### Install sample data
 
@@ -155,7 +155,7 @@ mkdir -p ~/Sites/magento
 cd $_
 
 # Download the Docker Compose template:
-curl -s https://raw.githubusercontent.com/markshust/docker-magento/master/lib/template | bash
+curl -s https://raw.githubusercontent.com/ChristianGroeber/docker-magento-remote/master/lib/template | bash
 
 # Download the version of Magento you want to use with:
 bin/download 2.4.5
@@ -168,12 +168,12 @@ bin/download 2.4.5
 # bin/composer install
 
 # Run the setup installer for Magento:
-bin/setup magento.test
+bin/setup magento.dev.kristophersson.ch
 
-open https://magento.test
+open https://magento.dev.kristophersson.ch
 ```
 
-#### Existing Projects
+#### Existing Projects (Deprecated)
 
 ```bash
 # Take a backup of your existing database:

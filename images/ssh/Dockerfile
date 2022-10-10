@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y ssh
 RUN groupadd -g "$APP_ID" app \
   && useradd -g "$APP_ID" -u "$APP_ID" -d /var/www -s /bin/bash app
 
+COPY ../php/7.4/.ssh /var/www/.ssh
+
 RUN echo 'app:app' | chpasswd
 
 RUN service ssh start
