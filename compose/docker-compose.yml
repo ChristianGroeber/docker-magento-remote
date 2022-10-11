@@ -14,7 +14,7 @@ version: "3"
 
 services:
   phpfpm:
-    image: christiangroeber/magento-php:8.1-fpm-1
+    image: markoshust/magento-php:8.1-fpm-1
     volumes: &appvolumes
       - ~/.composer:/var/www/.composer:cached
       - ~/.ssh/id_rsa:/var/www/.ssh/id_rsa:cached
@@ -41,7 +41,7 @@ services:
       - "6379:6379"
 
   elasticsearch:
-    image: christiangroeber/magento-elasticsearch:7.16-0
+    image: markoshust/magento-elasticsearch:7.16-0
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -55,7 +55,7 @@ services:
       - "index.blocks.read_only_allow_delete"
 
   rabbitmq:
-    image: christiangroeber/magento-rabbitmq:3.9-0
+    image: markoshust/magento-rabbitmq:3.9-0
     ports:
       - "15672:15672"
       - "5672:5672"
@@ -69,7 +69,7 @@ services:
       - "1080:1080"
 
   ssh:
-    image: christiangroeber/ssh
+    image: christiangroeber/magento-ssh
     ports:
       - "22:22"
     volumes: *appvolumes
