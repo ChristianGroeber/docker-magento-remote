@@ -13,13 +13,23 @@
 version: "3"
 
 services:
-  phpfpm:
-    image: markoshust/magento-php:8.1-fpm-1
+  app:
+    image: markoshust/magento-nginx:1.18-8
+    ports:
+      - "81:8000"
     volumes: &appvolumes
       - ~/.composer:/var/www/.composer:cached
       - ~/.ssh/id_rsa:/var/www/.ssh/id_rsa:cached
       - ~/.ssh/known_hosts:/var/www/.ssh/known_hosts:cached
       - appdata:/var/www/html
+      - sockdata:/sock
+      - ssldata:/etc/nginx/certs
+      #extra_hosts: &appextrahosts
+      ## Selenium support, replace "magento.test" with URL of your site
+      #- "magento.test:172.17.0.1"
+  phpfpm:
+    image: markoshust/magento-php:8.1-fpm-1
+    volumes: *appvolumes
     env_file: env/phpfpm.env
     #extra_hosts: *appextrahosts
 
@@ -71,7 +81,7 @@ services:
   ssh:
     image: christiangroeber/magento-ssh
     ports:
-      - "22:22"
+      - "25:22"
     volumes: *appvolumes
 
 volumes:
